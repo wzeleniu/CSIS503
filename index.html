@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="Look up the current time and timezone for a U.S. ZIP code.">
+  <link rel="manifest" href="zipTime-manifest.json">
+  <link rel="stylesheet" href="css/zipTime.css">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <title>ZIP Time</title>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="card">
+      <header class="app-header">
+        <div class="app-icon" aria-hidden="true">⌚</div>
+        <div>
+          <h1>ZIP Time</h1>
+          <p>Find the current time for a U.S. ZIP code.</p>
+        </div>
+      </header>
+
+      <form id="zip-form" class="search-form">
+        <label for="zip-code">ZIP code</label>
+        <div class="input-row">
+          <input
+            id="zip-code"
+            name="zip"
+            type="text"
+            inputmode="numeric"
+            autocomplete="postal-code"
+            maxlength="5"
+            pattern="[0-9]{5}"
+            placeholder="e.g. 48601"
+            required
+          >
+          <button type="submit" id="search-button">Look Up</button>
+        </div>
+      </form>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section id="result" class="result hidden" aria-live="polite">
+        <div class="location">
+          <span class="eyebrow">LOCATION</span>
+          <h2 id="location-name">—</h2>
+          <p id="location-state">—</p>
+        </div>
+
+        <div class="clock-panel">
+          <span class="eyebrow">CURRENT LOCAL TIME</span>
+          <div id="local-time" class="clock">--:--:--</div>
+          <div id="local-date" class="date">—</div>
+        </div>
+
+        <dl class="details">
+          <div>
+            <dt>Time zone</dt>
+            <dd id="timezone-name">—</dd>
+          </div>
+          <div>
+            <dt>Abbreviation</dt>
+            <dd id="timezone-abbr">—</dd>
+          </div>
+          <div>
+            <dt>UTC offset</dt>
+            <dd id="utc-offset">—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <footer>
+        <small>ZIP coordinates: Zippopotam.us · Timezone data: TimeAPI.io</small>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/settings.js"></script>
+  <script src="js/timezone.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
